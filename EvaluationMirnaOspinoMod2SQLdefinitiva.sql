@@ -302,6 +302,8 @@ WHERE `film_id` IN (
     ON `i`.`inventory_id` = `r`.`inventory_id`
     WHERE DATEDIFF(`r`.`return_date`, `r`.`rental_date`) > 5);
     
+                            	/*__________Ejercicio 23__________*/
+    
 -- 23 Encuentra el nombre y apellido de los actores que no han actuado en ninguna película de la categoría "Horror". Utiliza una subconsulta
 --  para encontrar los actores que han actuado en películas de la categoría "Horror" y luego exclúyelos de la lista de actores.
 
@@ -333,13 +335,28 @@ WHERE `a`.`actor_id` NOT IN (
 )
 ORDER BY `a`.`last_name`, `a`.`first_name`;   
     
-  
+--  BONUS  
+-- Encuentra el título de las películas que son comedias y tienen una duración mayor a 180 minutos en la tabla `film`.
+ -- Unimos las tablas film, film_category y category, podemos seleccionar el titulo de la tabla film y el nombre de la categoria de la tabla category
+ -- para comprobar en principio selecciono nombre y duracion:
+      
+SELECT film.title, category.name, film.length
+FROM film
+INNER JOIN film_category
+ON film.film_id = film_category.film_id
+INNER JOIN category
+ON film_category.category_id = category.category_id
+WHERE category.name = 'Comedy' AND film.length > 180;
 
+-- La query definitiva sería:
 
-
-        
-        
-        
+SELECT film.title
+FROM film
+INNER JOIN film_category
+ON film.film_id = film_category.film_id
+INNER JOIN category
+ON film_category.category_id = category.category_id
+WHERE category.name = 'Comedy' AND film.length > 180;
 
 
 
