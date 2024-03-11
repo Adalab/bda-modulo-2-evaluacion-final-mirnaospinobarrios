@@ -1,6 +1,6 @@
 💫 bda-modulo-2-evaluacion-final-mirnaospinobarrios
 
-Este repositorio contiene el código y la documentación relacionados con la evaluación final del módulo 2, en él se abordan diferentes consultas y operaciones con SQL para demostrar el conocimiento y las habilidades adquiridas en el manejo de bases de datos.
+Este repositorio contiene el código y la documentación relacionados con la evaluación final del módulo 2, en él se abordan diferentes consultas y operaciones con SQL para demostrar el conocimiento y las habilidades adquiridas en el manejo de bases de datos. Para el desarrollo de la evaluación utilizaremos la base de datos sakila
 
 
 💻 Tecnologías empleadas:
