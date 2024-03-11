@@ -223,12 +223,28 @@ SELECT  c.`name` AS nombre_categoria, AVG(f.`length`) AS promedio_duracion
 	HAVING  AVG(f.`length`) > 120; 
     
                         	/*__________Ejercicio 21__________*/
+                            
 
+-- 21 Encuentra los actores que han actuado en al menos 5 películas y muestra el nombre del actor junto con la cantidad de películas en las que han actuado.
 
+SELECT  a.first_name, a.last_name, COUNT(fa.film_id) AS cantidad_peliculas
+		FROM  actor AS a
+		JOIN  film_actor AS fa
+        ON a.actor_id = fa.actor_id
+		GROUP BY  a.actor_id, a.first_name, a.last_name
+		HAVING  COUNT(fa.film_id) >= 5;
 
+                        	/*__________Ejercicio 22__________*/
+-- 22 Encuentra el título de todas las películas que fueron alquiladas por más de 5 días. Utiliza una subconsulta para encontrar los rent_ids con una duración superior a 5 días y luego selecciona las películas correspondientes.
 
-
-
+SELECT `title`
+FROM `film`
+WHERE `film_id` IN (
+    SELECT `i`.`film_id`
+    FROM `inventory` AS `i`
+    INNER JOIN `rental` AS `r`
+    ON `i`.`inventory_id` = `r`.`inventory_id`
+    WHERE DATEDIFF(`r`.`return_date`, `r`.`rental_date`) > 5);
 
 
 
